@@ -671,3 +671,26 @@ document.getElementById("year").textContent =
 /* INITIAL PORTFOLIO LOAD */
 
 renderPortfolio("all");
+
+// MOBILE MENU TOGGLE
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      navLinks.classList.contains("active")
+    );
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
